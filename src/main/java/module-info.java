@@ -5,4 +5,6 @@ module com.example.firstjavafx {
 
     opens com.example.firstjavafx to javafx.fxml;
     exports com.example.firstjavafx;
+    exports com.example.firstjavafx.controllers;
+    opens com.example.firstjavafx.controllers to javafx.fxml;
 }
