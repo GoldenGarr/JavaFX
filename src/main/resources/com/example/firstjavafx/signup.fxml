@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.firstjavafx.controllers.SignUpController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #0136FE;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.firstjavafx.controllers.SignUpController">
+    <children>
+        <AnchorPane layoutX="-4.0" layoutY="112.0" prefHeight="288.0" prefWidth="700.0" style="-fx-background-color: #FEFE01#FEFE01;">
+            <children>
+                <TextField fx:id="login_filed" layoutX="73.0" layoutY="81.0" prefHeight="32.0" prefWidth="256.0" promptText="Login" style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <PasswordField fx:id="password_field" layoutX="366.0" layoutY="81.0" prefHeight="32.0" prefWidth="256.0" promptText="Password" style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </PasswordField>
+                <Button fx:id="signup_button" layoutX="314.0" layoutY="211.0" mnemonicParsing="false" text="Sign up">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+            <TextField fx:id="signup_name" layoutX="73.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Name" style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="signup_surname" layoutX="366.0" layoutY="34.0" prefHeight="32.0" prefWidth="256.0" promptText="Surname" style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <CheckBox fx:id="male_check" layoutX="248.0" layoutY="172.0" mnemonicParsing="false" text="Male" />
+            <CheckBox fx:id="female_check" layoutX="366.0" layoutY="172.0" mnemonicParsing="false" text="Female" />
+            <TextField fx:id="signup_country" layoutX="222.0" layoutY="128.0" prefHeight="32.0" prefWidth="256.0" promptText="Country" style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            </children>
+        </AnchorPane>
+        <Label fx:id="title_label" layoutX="246.0" layoutY="43.0" text="Test Application" textFill="WHITE">
+            <font>
+                <Font name="System Bold Italic" size="35.0" />
+            </font>
+        </Label>
+    </children>
 </AnchorPane>
