@@ -4,6 +4,7 @@ import com.example.firstjavafx.HelloApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,8 +34,8 @@ public class HelloController {
     void initialize() {
         sign_button.setOnAction(event -> {
             System.out.println("Sign in button pressed");
-            Node node=(Node) event.getSource();
-            Stage stage=(Stage) node.getScene().getWindow();
+            Node node = (Node) event.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml"));
             Scene scene = null;
             try {
@@ -42,9 +43,24 @@ public class HelloController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            stage.setTitle("JavaFX app");
             stage.setScene(scene);
             stage.show();
+        });
+
+        register_button.setOnAction(event -> {
+            System.out.println("Register button pressed");
+            register_button.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("signup.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
         });
     }
 }
