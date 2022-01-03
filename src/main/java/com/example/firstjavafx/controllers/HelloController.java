@@ -44,7 +44,7 @@ public class HelloController {
             if (!loginText.equals("") && !passwordText.equals("")) {
                 loginUser(loginText, passwordText);
             } else {
-                System.out.println("Empty login and/or password are empty");
+                System.out.println("Empty login and/or password");
             }
 
             /* Node node = (Node) event.getSource();
