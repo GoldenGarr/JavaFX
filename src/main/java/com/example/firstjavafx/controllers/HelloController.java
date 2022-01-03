@@ -94,6 +94,20 @@ public class HelloController {
             }
             counter++;
         }
-        System.out.println(counter);
+        if (counter == 1) {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(HelloApplication.class.getResource("home.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        } else {
+            System.out.println("Wrong login and/or password");
+        }
     }
 }
