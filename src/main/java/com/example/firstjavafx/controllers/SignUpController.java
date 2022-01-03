@@ -1,6 +1,7 @@
 package com.example.firstjavafx.controllers;
 
 import com.example.firstjavafx.db_util.DBWorker;
+import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -36,8 +37,13 @@ public class SignUpController {
     void initialize() {
         DBWorker worker = new DBWorker();
         signup_button.setOnAction(event -> {
-            worker.signupUser(signup_name.getText(), signup_surname.getText(),
-                    login_filed.getText(), password_field.getText(), signup_country.getText(), "male");
+            User user = new User(signup_name.getText(), signup_surname.getText(),
+                    login_filed.getText(), password_field.getText(), signup_country.getText(), "");
+            if (male_check.isSelected())
+                user.setGender("male");
+            else if (female_check.isSelected())
+                user.setGender("female");
+            worker.signupUser(user);
         });
     }
 }
