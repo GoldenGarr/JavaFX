@@ -34,7 +34,16 @@ public class HelloController {
     void initialize() {
         sign_button.setOnAction(event -> {
             System.out.println("Sign in button pressed");
-            Node node = (Node) event.getSource();
+
+            String loginText = login_filed.getText().trim();
+            String passwordText = password_field.getText().trim();
+            if (!loginText.equals("") && !passwordText.equals("")) {
+                    loginUser(loginText, passwordText);
+            } else {
+                System.out.println("Empty login and/or password are empty");
+            }
+
+            /* Node node = (Node) event.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home.fxml"));
             Scene scene = null;
@@ -44,7 +53,7 @@ public class HelloController {
                 e.printStackTrace();
             }
             stage.setScene(scene);
-            stage.show();
+            stage.show(); */
         });
 
         register_button.setOnAction(event -> {
@@ -62,5 +71,9 @@ public class HelloController {
             stage.setScene(new Scene(root));
             stage.showAndWait();
         });
+    }
+
+    private void loginUser(String loginText, String passwordText) {
+        // TODO
     }
 }
