@@ -1,6 +1,7 @@
 package com.example.firstjavafx.controllers;
 
 import com.example.firstjavafx.HelloApplication;
+import com.example.firstjavafx.animations.AnimationShake;
 import com.example.firstjavafx.db_util.DBWorker;
 import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
@@ -108,6 +109,8 @@ public class HelloController {
             stage.showAndWait();
         } else {
             System.out.println("Wrong login and/or password");
+            AnimationShake sign_button_shake = new AnimationShake(sign_button);
+            sign_button_shake.execute();
         }
     }
 }
