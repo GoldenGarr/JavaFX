@@ -45,5 +45,6 @@ public class SignUpController {
                 user.setGender("female");
             worker.signupUser(user);
         });
+        worker.closeConnection();
     }
 }

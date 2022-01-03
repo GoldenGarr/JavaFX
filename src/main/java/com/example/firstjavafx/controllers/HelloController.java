@@ -1,6 +1,8 @@
 package com.example.firstjavafx.controllers;
 
 import com.example.firstjavafx.HelloApplication;
+import com.example.firstjavafx.db_util.DBWorker;
+import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class HelloController {
     @FXML
@@ -38,7 +42,7 @@ public class HelloController {
             String loginText = login_filed.getText().trim();
             String passwordText = password_field.getText().trim();
             if (!loginText.equals("") && !passwordText.equals("")) {
-                    loginUser(loginText, passwordText);
+                loginUser(loginText, passwordText);
             } else {
                 System.out.println("Empty login and/or password are empty");
             }
@@ -74,6 +78,22 @@ public class HelloController {
     }
 
     private void loginUser(String loginText, String passwordText) {
-        // TODO
+        DBWorker worker = new DBWorker();
+
+        User user = new User();
+        user.setUsername(loginText);
+        user.setPassword(passwordText);
+
+        ResultSet resultSet = worker.getUser(user);
+        int counter = 0;
+        while(true) {
+            try {
+                if (!resultSet.next()) break;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            counter++;
+        }
+        System.out.println(counter);
     }
 }

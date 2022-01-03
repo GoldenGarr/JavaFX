@@ -30,8 +30,8 @@ public class DBWorker extends DBConfigs {
 
     public void signupUser(User user) {
         String query = "INSERT INTO " + Constants.USER_TABLE + "(" + Constants.FIRST_NAME + ", "
-                + Constants.SECOND_NAME  + ", " + Constants.USERNAME + ", " + Constants.LOCATION
-                + ", " + Constants.GENDER + ", " + Constants.PASSWORD + ") VALUES(?, ?, ?, ?, ?, ?)";
+                + Constants.SECOND_NAME + ", " + Constants.USERNAME + ", " + Constants.LOCATION
+                + ", " + Constants.GENDER + ", " + Constants.PASSWORD + ") VALUES(?, ?, ?, ?, ?, ?);";
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, user.getFirst_name());
@@ -40,9 +40,23 @@ public class DBWorker extends DBConfigs {
             preparedStatement.setString(4, user.getLocation());
             preparedStatement.setString(5, user.getGender());
             preparedStatement.setString(6, user.getPassword());
-            preparedStatement.executeUpdate() ;
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet getUser(User user) {
+        ResultSet resultSet = null;
+        String query = "SELECT * FROM " + Constants.USER_TABLE + " WHERE " + Constants.USERNAME + " = ? AND " + Constants.PASSWORD + " = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return resultSet;
     }
 }
