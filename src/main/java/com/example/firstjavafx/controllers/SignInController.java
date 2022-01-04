@@ -6,7 +6,6 @@ import com.example.firstjavafx.db_util.DBWorker;
 import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,7 +20,7 @@ import java.sql.SQLException;
 
 public class SignInController {
     @FXML
-    private TextField login_filed;
+    private TextField login_field;
 
     @FXML
     private PasswordField password_field;
@@ -40,7 +39,7 @@ public class SignInController {
         sign_button.setOnAction(event -> {
             System.out.println("Sign in button pressed");
 
-            String loginText = login_filed.getText().trim();
+            String loginText = login_field.getText().trim();
             String passwordText = password_field.getText().trim();
             if (!loginText.equals("") && !passwordText.equals("")) {
                 loginUser(loginText, passwordText);
@@ -75,7 +74,7 @@ public class SignInController {
         user.setPassword(passwordText);
 
         ResultSet resultSet = worker.getUser(user);
-        int counter = 0;
+        // int counter = 0;
         boolean sign_in_successful = false;
         try {
             if (resultSet.next()) {
@@ -89,8 +88,14 @@ public class SignInController {
             sendUserData("home.fxml", user);
         } else {
             System.out.println("Wrong login and/or password");
-            AnimationShake sign_button_shake = new AnimationShake(sign_button);
-            sign_button_shake.execute();
+            // AnimationShake sign_button_shake = new AnimationShake(sign_button);
+            AnimationShake login_field_shake = new AnimationShake(login_field);
+            AnimationShake password_field_shake = new AnimationShake(password_field);
+
+            login_field_shake.execute();
+            password_field_shake.execute();
+
+            // sign_button_shake.execute();
         }
     }
 

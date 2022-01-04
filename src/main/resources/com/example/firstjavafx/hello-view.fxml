@@ -15,7 +15,7 @@
         <AnchorPane layoutX="-4.0" layoutY="112.0" prefHeight="288.0" prefWidth="700.0"
                     style="-fx-background-color: #FEFE01#FEFE01;">
             <children>
-                <TextField fx:id="login_filed" layoutX="236.0" layoutY="80.0" prefHeight="32.0" prefWidth="256.0"
+                <TextField fx:id="login_field" layoutX="236.0" layoutY="80.0" prefHeight="32.0" prefWidth="256.0"
                            promptText="Login"
                            style="-fx-background-color: #fafafa; -fx-border-radius: 10; -fx-border-color: gold;">
                     <font>
