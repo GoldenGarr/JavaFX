@@ -1,6 +1,7 @@
 package com.example.firstjavafx.util;
 
 public class User {
+    private int user_id;
     private String first_name;
     private String second_name;
     private String username;
@@ -19,6 +20,14 @@ public class User {
         this.password = password;
         this.location = location;
         this.gender = gender;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getFirst_name() {

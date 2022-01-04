@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class HelloController {
+public class SignInController {
     @FXML
     private TextField login_filed;
 
@@ -63,18 +63,7 @@ public class HelloController {
 
         register_button.setOnAction(event -> {
             System.out.println("Register button pressed");
-            register_button.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(HelloApplication.class.getResource("signup.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            openScene("signup.fxml");
         });
     }
 
@@ -87,7 +76,7 @@ public class HelloController {
 
         ResultSet resultSet = worker.getUser(user);
         int counter = 0;
-        while(true) {
+        while (true) {
             try {
                 if (!resultSet.next()) break;
             } catch (SQLException e) {
@@ -96,21 +85,44 @@ public class HelloController {
             counter++;
         }
         if (counter == 1) {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(HelloApplication.class.getResource("home.fxml"));
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            sendUserData("home.fxml", user);
         } else {
             System.out.println("Wrong login and/or password");
             AnimationShake sign_button_shake = new AnimationShake(sign_button);
             sign_button_shake.execute();
         }
+    }
+
+    public void openScene(String window_address) {
+        sign_button.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(HelloApplication.class.getResource(window_address));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
+    }
+
+    public void sendUserData(String window_address, User user) {
+        sign_button.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(HelloApplication.class.getResource(window_address));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+
+        stage.setUserData(user);
+
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 }
