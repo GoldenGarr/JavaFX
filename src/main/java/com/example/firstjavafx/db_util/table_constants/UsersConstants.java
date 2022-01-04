@@ -1,6 +1,6 @@
-package com.example.firstjavafx.db_util;
+package com.example.firstjavafx.db_util.table_constants;
 
-public class Constants {
+public class UsersConstants {
     public static final String USER_TABLE = "app_users";
     public static final String USER_ID = "user_id";
     public static final String FIRST_NAME = "first_name";
