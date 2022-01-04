@@ -1,5 +1,7 @@
 package com.example.firstjavafx.db_util;
 
+import com.example.firstjavafx.db_util.table_constants.UsersConstants;
+import com.example.firstjavafx.util.FlashCard;
 import com.example.firstjavafx.util.User;
 
 import java.sql.*;
@@ -29,9 +31,9 @@ public class DBWorker extends DBConfigs {
     }
 
     public void signupUser(User user) {
-        String query = "INSERT INTO " + Constants.USER_TABLE + "(" + Constants.FIRST_NAME + ", "
-                + Constants.SECOND_NAME + ", " + Constants.USERNAME + ", " + Constants.LOCATION
-                + ", " + Constants.GENDER + ", " + Constants.PASSWORD + ") VALUES(?, ?, ?, ?, ?, ?);";
+        String query = "INSERT INTO " + UsersConstants.USER_TABLE + "(" + UsersConstants.FIRST_NAME + ", "
+                + UsersConstants.SECOND_NAME + ", " + UsersConstants.USERNAME + ", " + UsersConstants.LOCATION
+                + ", " + UsersConstants.GENDER + ", " + UsersConstants.PASSWORD + ") VALUES(?, ?, ?, ?, ?, ?);";
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(query);
             preparedStatement.setString(1, user.getFirst_name());
@@ -46,9 +48,13 @@ public class DBWorker extends DBConfigs {
         }
     }
 
+    public void insertFlashCard(User user, FlashCard flashCard) {
+        // String query =
+    }
+
     public ResultSet getUser(User user) {
         ResultSet resultSet = null;
-        String query = "SELECT * FROM " + Constants.USER_TABLE + " WHERE " + Constants.USERNAME + " = ? AND " + Constants.PASSWORD + " = ?;";
+        String query = "SELECT * FROM " + UsersConstants.USER_TABLE + " WHERE " + UsersConstants.USERNAME + " = ? AND " + UsersConstants.PASSWORD + " = ?;";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());

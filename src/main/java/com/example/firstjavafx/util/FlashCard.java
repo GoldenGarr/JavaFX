@@ -3,22 +3,22 @@ package com.example.firstjavafx.util;
 public class FlashCard {
     private String term;
     private String definition;
-    private boolean is_starred;
+    private byte is_starred;
 
     public FlashCard() {
     }
 
-    public FlashCard(String text, String definition, boolean is_starred) {
+    public FlashCard(String text, String definition, byte is_starred) {
         this.term = text;
         this.definition = definition;
         this.is_starred = is_starred;
     }
 
-    public String getText() {
+    public String getTerm() {
         return term;
     }
 
-    public void setText(String text) {
+    public void setTerm(String text) {
         this.term = text;
     }
 
@@ -30,11 +30,11 @@ public class FlashCard {
         this.definition = definition;
     }
 
-    public boolean isIs_starred() {
+    public byte getIs_starred() {
         return is_starred;
     }
 
-    public void setIs_starred(boolean is_starred) {
+    public void setIs_starred(byte is_starred) {
         this.is_starred = is_starred;
     }
 
