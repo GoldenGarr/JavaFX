@@ -1,5 +1,6 @@
 package com.example.firstjavafx.controllers;
 
+import com.example.firstjavafx.util.CustomController;
 import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -8,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class HomeController {
+public class HomeController extends CustomController {
     @FXML
     private ImageView image_frog;
 

@@ -1,11 +1,12 @@
 package com.example.firstjavafx.controllers;
 
 import com.example.firstjavafx.db_util.DBWorker;
+import com.example.firstjavafx.util.CustomController;
 import com.example.firstjavafx.util.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class SignUpController {
+public class SignUpController extends CustomController {
     @FXML
     private CheckBox female_check;
 
