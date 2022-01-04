@@ -16,18 +16,21 @@ public class HomeController {
     private Label title_label;
 
     @FXML
-    private void receiveData(MouseEvent event) {
+    private User receiveData(MouseEvent event) {
         // Step 1
         Node node = (Node) event.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         // Step 2
-        User u = (User) stage.getUserData();
         // Step 3
-        System.out.println(u.getUsername());
+        return (User) stage.getUserData();
     }
 
     @FXML
     void initialize() {
-        image_frog.setOnMouseClicked(this::receiveData);
+        image_frog.setOnMouseClicked(mouseEvent -> {
+            User received_user = receiveData(mouseEvent);
+            System.out.println("ID: " + received_user.getUser_id() + ", USERNAME: " + received_user.getUsername()
+                    + ", PASSWORD: " + received_user.getPassword());
+        });
     }
 }

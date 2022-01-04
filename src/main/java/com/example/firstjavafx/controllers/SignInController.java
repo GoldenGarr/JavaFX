@@ -76,15 +76,16 @@ public class SignInController {
 
         ResultSet resultSet = worker.getUser(user);
         int counter = 0;
-        while (true) {
-            try {
-                if (!resultSet.next()) break;
-            } catch (SQLException e) {
-                e.printStackTrace();
+        boolean sign_in_successful = false;
+        try {
+            if (resultSet.next()) {
+                user.setUser_id(resultSet.getInt("user_id"));
+                sign_in_successful = true;
             }
-            counter++;
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        if (counter == 1) {
+        if (sign_in_successful) {
             sendUserData("home.fxml", user);
         } else {
             System.out.println("Wrong login and/or password");
