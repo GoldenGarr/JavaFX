@@ -1,5 +1,6 @@
 package com.example.firstjavafx.db_util;
 
+import com.example.firstjavafx.db_util.table_constants.FlashCardsConstants;
 import com.example.firstjavafx.db_util.table_constants.UsersConstants;
 import com.example.firstjavafx.util.FlashCard;
 import com.example.firstjavafx.util.User;
@@ -49,7 +50,20 @@ public class DBWorker extends DBConfigs {
     }
 
     public void insertFlashCard(User user, FlashCard flashCard) {
-        // String query =
+         String query = "INSERT INTO " + FlashCardsConstants.FLASHCARDS_TABLE + "(" + FlashCardsConstants.TERM + ", "
+                 + FlashCardsConstants.DEFINITION + ", " + FlashCardsConstants.IS_STARRED + ", " + FlashCardsConstants.USER_ID
+                 + ") VALUES(?, ?, ?, ?);";
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, flashCard.getTerm());
+            preparedStatement.setString(2, flashCard.getDefinition());
+            preparedStatement.setString(3, String.valueOf(flashCard.getIs_starred()));
+            preparedStatement.setString(4, String.valueOf(user.getUser_id()));
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public ResultSet getUser(User user) {
